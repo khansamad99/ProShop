@@ -5,7 +5,9 @@ function App() {
   return (
     <div>
       <Header/>
-        <main>Hello</main>
+        <Container>
+          <main className="py-3"><h1>Welcome To ProShop </h1></main>
+        </Container>
       <Footer/>
     </div>
   );
