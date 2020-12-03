@@ -7,7 +7,6 @@ function App() {
     <div>
       <Header/>
         <Container>
-          <main className="py-3"><h1>Welcome To ProShop </h1></main>
           <Homescreen/>
         </Container>
       <Footer/>
