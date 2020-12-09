@@ -7,7 +7,9 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "npm start --prefix ui",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import":"node backend/seeder",
+    "data:destroy":"node backend/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   "homepage": "https://github.com/khansamad99/ProShop#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
