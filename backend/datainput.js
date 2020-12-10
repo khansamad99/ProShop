@@ -1,12 +1,12 @@
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-import colors from 'colors'
-import users from './data/users.js'
-import products from './data/products.js'
-import User from './models/users.js'
-import Product from './models/products.js'
-import Order from './models/orderModel.js'
-import connectDB from './config/db.js'
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const products = require('./data/products');
+const users = require('./data/users');
+const connectDB = require('./config/db');
+const colors = require('colors');
+const User = require('./models/User.js');
+const Product =  require('./models/Product.js');
+const Order =  require('./models/Order.js');
 
 
 dotenv.config();
@@ -15,9 +15,7 @@ connectDB();
 
 const importData = async () => {
     try {
-        await Order.deleteMany();
-        await Product.deleteMany();
-        await User.deleteMany();
+        
 
         const createUsers = await User.insertMany(users);
 
