@@ -19,7 +19,7 @@ export const productReducers = (state={products:[]},action) => {
     }
 }
 
-export const productDetailsReducers = (state={products:{ reviews:[]}},action) => {
+export const productDetailsReducers = (state={product:{ reviews:[]}},action) => {
     switch(action.type){
         case PRODUCT_DETAILS_REQUEST:
             return {loading:true,...state}
