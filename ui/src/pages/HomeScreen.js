@@ -22,7 +22,7 @@ const HomeScreen = () => {
             {loading?(<Loader/>):error?<Message variant='danger'>{error}</Message>:
             <Row>
                 {products.map(product => (
-                    <Col key={product._id}sm={12} lg={6} xl={3}>
+                    <Col key={product._id} sm={12} lg={6} xl={3}>
                         <Product product={product}/>
                     </Col>
                 ))}
