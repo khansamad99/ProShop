@@ -8,7 +8,7 @@ const router = express.Router();
 // @description
 // @fetch all products
 // Public route
-const getProducts = asyncHandler(async(req,res) => {
+exports.getProducts = asyncHandler(async(req,res) => {
       const products = await Product.find({})
   
       res.json(products)
@@ -17,7 +17,7 @@ const getProducts = asyncHandler(async(req,res) => {
 // @description
 // @fetch single  product
 // Public route
-const getProductById = asyncHandler(async(req,res) => {
+exports.getProductById = asyncHandler(async(req,res) => {
   const product = await Product.findById(req.params.id)
   
   if (product) {
@@ -26,8 +26,3 @@ const getProductById = asyncHandler(async(req,res) => {
     res.status(404).json({ message: 'Product not found' })
   }
 })
-
-export {
-  getProducts,
-  getProductById
-}
