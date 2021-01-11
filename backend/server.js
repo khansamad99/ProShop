@@ -4,6 +4,7 @@ const products = require('./data/products');
 const connect = require('./config/db');
 const colors = require('colors');
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 const app = express();
 
 connect();
@@ -14,6 +15,8 @@ app.get('/',(req,res) => {
     res.send('API is running...');
 })
 
+app.use(express.json())
+app.use('/api/users',userRoutes)
 app.use('/api/products',productRoutes);
 
 const PORT = process.env.PORT || 5000
