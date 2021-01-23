@@ -22,7 +22,7 @@ const reducer = combineReducers({
 
 const initState = {
     cart:{cartItems:cartItemStorage},
-    
+    userLogin:{userInfo:userInfoFromStorage},
 };
 
 const middleware = [thunk];
