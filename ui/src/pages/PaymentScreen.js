@@ -21,7 +21,7 @@ const PaymentScreen = ({history}) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(savepaymentAddress(paymentMethod))
+        dispatch(savePaymentMethod(paymentMethod))
         history.push('/placeorder')
     }
     return (
