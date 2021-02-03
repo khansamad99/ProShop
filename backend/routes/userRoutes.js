@@ -8,4 +8,5 @@ router.post('/login', authUser)
 router.route('/profile')
     .get(getUserProfile,protect)
     .put(updateUserProfile,protect)
+    
 module.exports = router;
