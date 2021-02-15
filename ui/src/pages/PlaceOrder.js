@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
 import {createOrder} from '../actions/orderAction'
-
 const PlaceOrder = ({history}) => {
     const dispatch = useDispatch()
 
