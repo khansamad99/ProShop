@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import { listMyOrders } from '../actions/orderActions'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 
@@ -21,6 +22,12 @@ const ProfileScreen = ({location,history}) => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
+  const { success } = userUpdateProfile
+
+  const orderListMy = useSelector((state) => state.orderListMy)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
   useEffect(() => {
     if(!userInfo){
