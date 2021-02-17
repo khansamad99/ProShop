@@ -20,6 +20,9 @@ app.use(express.json())
 app.use('/api/users',userRoutes)
 app.use('/api/products',productRoutes);
 app.use('/api/order',orderRoutes);
+app.use('/api/config/paypal',(req,res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID)
+})
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT,console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`.yellow.bold));
