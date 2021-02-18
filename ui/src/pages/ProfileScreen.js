@@ -114,7 +114,44 @@ const ProfileScreen = ({location,history}) => {
             )}
             </Col>
             <Col md={9}>
-            
+              {loadingOrders ? <Loader/> : errorOrders ? <Message variant='danger'>
+                {errorOrders}
+               </Message> : (
+                 <Table striped bordered hover responsive className='table-sm'>
+                   <thead>
+                     <tr>
+                       <th>ID</th>
+                       <th>DATE</th>
+                       <th>TOTAL</th>
+                       <th>PAID</th>
+                       <th>DELIVERED</th>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     {orders.map(map=> (
+                       <tr key={orders._id}>
+                         <td>{orders._id}</td>
+                         <td>{orders._createdAt}</td>
+                         <td>{orders._totalPrice}</td>
+                         <td>{orders.isPaid ? orders.paidAt.substring(0,10):(
+                           <i className='fas fa-times' style={{color:'red'}}></i>
+                         )}
+                        </td>
+                         <td>{orders.isDelivered ? (
+                           order.deliveredAt.substring(0,10)
+                         ) : (
+                           <i className='fas fa-times' style={{ color:'red'}}></i>
+                         )}</td>
+                         <td>
+                           <LinkContainer to={`/order/${order.id}`}>
+                             <Button className='btn-sm' variant='light'>Details</Button>
+                           </LinkContainer>
+                         </td>
+                       </tr>
+                     ))}
+                   </tbody>
+                 </Table>
+               )}
             </Col>
         </div>
     )
