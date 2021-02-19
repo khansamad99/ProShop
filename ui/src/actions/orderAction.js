@@ -10,7 +10,7 @@ import {
     ORDER_CREATE_RESET
 } from '../constants/orderConstants'    
 import { logout } from './userActions'
-exports.createOrder = (order) => async (dispatch, getState) => {
+export const createOrder = (order) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ORDER_CREATE_REQUEST,
@@ -55,7 +55,7 @@ exports.createOrder = (order) => async (dispatch, getState) => {
 
 
 
-  exports.getOrderDetails = (id) => async (dispatch, getState) => {
+  export const getOrderDetails = (id) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ORDER_DETAILS_REQUEST,
