@@ -12,7 +12,10 @@ import {
     USER_UPDATE_FAIL,
     USER_UPDATE_SUCCESS,
     USER_UPDATE_REQUEST,
-    USER_DETAILS_RESET
+    USER_DETAILS_RESET,
+    USER_LIST_REQUEST,
+    USER_LIST_SUCCESS,
+    USER_LIST_FAIL
 } from '../constants/userConstants';
 import {ORDER_LIST_MY_RESET} from '../constants/orderConstants'
 import axios from "axios";
@@ -160,6 +163,43 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       }
       dispatch({
         type: USER_UPDATE_FAIL,
+        payload: message,
+      })
+    }
+  }
+
+  export const listUsers = () => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_LIST_REQUEST,
+      })
+  
+      const {
+        userLogin: { userInfo },
+      } = getState()
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+  
+      const { data } = await axios.get(`/api/users`, config)
+  
+      dispatch({
+        type: USER_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout())
+      }
+      dispatch({
+        type: USER_LIST_FAIL,
         payload: message,
       })
     }
