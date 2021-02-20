@@ -10,15 +10,15 @@ import {
     ORDER_CREATE_RESET,
     ORDER_PAY_REQUEST,
     ORDER_PAY_SUCCESS,
-    ORDER_PAY_FAIL
+    ORDER_PAY_FAIL,
+    ORDER_LIST_MY_FAIL,
+    ORDER_LIST_MY_REQUEST,
+    ORDER_LIST_MY_SUCCESS,
+    ORDER_LIST_MY_RESET
 } from '../constants/orderConstants'    
-import { logout } from './userActions'
-<<<<<<< HEAD
-export const createOrder = (order) => async (dispatch, getState) => {
-=======
 
-exports.createOrder = (order) => async (dispatch, getState) => {
->>>>>>> 4dbb9132057df72980515956b6dea0d60969fec4
+import { logout } from './userActions'
+export const createOrder = (order) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ORDER_CREATE_REQUEST,
@@ -35,7 +35,7 @@ exports.createOrder = (order) => async (dispatch, getState) => {
         },
       }
   
-      const { data } = await axios.post(`/api/orders`, order, config)
+      const { data } = await axios.post(`/api/order`, order, config)
   
       dispatch({
         type: ORDER_CREATE_SUCCESS,
@@ -101,7 +101,7 @@ exports.createOrder = (order) => async (dispatch, getState) => {
   }
 
 
-  exports.payOrder = (orderId,paymentResult) => async (dispatch, getState) => {
+  export const payOrder = (orderId,paymentResult) => async (dispatch, getState) => {
     try {
       dispatch({
         type: ORDER_PAY_REQUEST,
@@ -140,7 +140,7 @@ exports.createOrder = (order) => async (dispatch, getState) => {
   }
   
 
-  exports.listMyOrders = () => async (dispatch, getState) => {
+  export const listMyOrders = () => async (dispatch, getState) => {
     try {
       dispatch({
         type: ORDER_LIST_MY_REQUEST,

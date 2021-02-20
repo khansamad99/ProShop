@@ -5,10 +5,7 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
-<<<<<<< HEAD
-    ORDER_CREATE_RESET
-    
-=======
+    ORDER_CREATE_RESET,
     ORDER_PAY_RESET,
     ORDER_PAY_REQUEST,
     ORDER_PAY_SUCCESS,
@@ -16,8 +13,7 @@ import {
     ORDER_LIST_MY_REQUEST,
     ORDER_LIST_MY_SUCCESS,
     ORDER_LIST_MY_FAIL,
-    ORDER_LIST_MY_RESET,
->>>>>>> 4dbb9132057df72980515956b6dea0d60969fec4
+    ORDER_LIST_MY_RESET
 } from '../constants/orderConstants'    
 
 export const orderCreateReducer = (state = {}, action) => {

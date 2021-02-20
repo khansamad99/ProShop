@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listMyOrders } from '../actions/orderActions'
+import { listMyOrders } from '../actions/orderAction'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 
@@ -43,8 +43,6 @@ const ProfileScreen = ({location,history}) => {
     }
   },[dispatch,history,userInfo,user])
 
-  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
-  const { success } = userUpdateProfile
   
   const submitHandler = (e) => {
     e.preventDefault()
@@ -138,12 +136,12 @@ const ProfileScreen = ({location,history}) => {
                          )}
                         </td>
                          <td>{orders.isDelivered ? (
-                           order.deliveredAt.substring(0,10)
+                           orders.deliveredAt.substring(0,10)
                          ) : (
                            <i className='fas fa-times' style={{ color:'red'}}></i>
                          )}</td>
                          <td>
-                           <LinkContainer to={`/order/${order.id}`}>
+                           <LinkContainer to={`/order/${orders._id}`}>
                              <Button className='btn-sm' variant='light'>Details</Button>
                            </LinkContainer>
                          </td>
