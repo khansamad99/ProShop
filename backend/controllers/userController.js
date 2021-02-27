@@ -14,7 +14,7 @@ exports.authUser = asyncHandler(async(req,res) => {
     
     const isMatch = await bcrypt.compare(password, toString(user.password));
 
-    if (user ) {
+    if (user && (isMatch)) {
         res.json({
           _id: user._id,
           name: user.name,
@@ -122,7 +122,24 @@ exports.updateUserProfile = asyncHandler(async (req, res) => {
 // @desc    Get all users
 // @route   GET /api/users
 // @access  Private/Admin
-const getUsers = asyncHandler(async (req, res) => {
+exports.getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({})
   res.json(users)
 })
+
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+exports.deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id)
+
+  if (user) {
+    await user.remove()
+    res.json({ message: 'User removed' })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
