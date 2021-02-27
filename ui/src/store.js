@@ -31,7 +31,8 @@ const reducer = combineReducers({
     orderPay:orderPayReducer,
     orderListMy:orderListMyReducer,
     userList:userListReducer,
-    userDelete:userDeleteReducer
+    userDelete:userDeleteReducer,
+    userUpdate:userUpdateProfileReducer
 });
 
 const initState = {
