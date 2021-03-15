@@ -4,20 +4,30 @@ import {Row,Col} from "react-bootstrap";
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import ProductCarousel from '../components/ProductCarousel';
 import {listProducts} from '../actions/productAction';
-const HomeScreen = () => {
 
-    const dispatch = useDispatch()
-
-    const productList = useSelector(state => state.productList)
-    const {loading,error,products} = productList 
+const HomeScreen = ({match}) => {
+    const keyword = match.params.keyword
     
+    const dispatch = useDispatch()
+  
+    const productList = useSelector((state) => state.productList)
+    const { loading, error, products, page, pages } = productList
+  
     useEffect(() => {
-        dispatch(listProducts()) 
-    },[dispatch])
+      dispatch(listProducts(keyword, pageNumber))
+    }, [dispatch, keyword, pageNumber])
 
     return (
         <div>
+            {!keyword ? (
+                <ProductCarousel />
+            ) : (
+                <Link to='/' className='btn btn-light'>
+                Go Back
+                </Link>
+            )}
             <h1>Latest Products</h1>
             {loading?(<Loader/>):error?<Message variant='danger'>{error}</Message>:
             <Row>
