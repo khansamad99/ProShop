@@ -9,7 +9,7 @@ import Meta from '../components/Meta'
 import {
   listProductDetails,
   createProductReview,
-} from '../actions/productActions'
+} from '../actions/productAction'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
 const ProductScreen = ({ history, match }) => {
